@@ -43,9 +43,15 @@ class SongsController < ApplicationController
 
   patch "/songs/:slug" do
     @song = Song.find {|song| song.slug == params[:slug]}
-    @song.update(params[:song])
-    @song.artist = Artist.find_or_create_by(name: params[:artist][:name])
-    @song.genres = params[:genres]
+    @song.name = params[:Name]
+    @song.artist = Artist.find_or_create_by(:name => params["Artist Name"])
+    @genres = Genre.find(params[:genres])
+    @song.song_genres.clear
+    @genres.each do |genre|
+      song_genre = SongGenre.new(:song => @song, :genre => genre)
+      song_genre.save
+    end
+
     @song.save
     binding.pry
     flash[:message] = "Successfully updated song."
