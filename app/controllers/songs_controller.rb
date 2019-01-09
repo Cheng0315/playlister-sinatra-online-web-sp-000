@@ -43,7 +43,9 @@ class SongsController < ApplicationController
 
   patch "/songs/:slug" do
     @song = Song.find {|song| song.slug == params[:slug]}
-    @song.genres = params[:genres]
+    @genre = Genre.find_by(name: params[:genres])
+    @song.genres << @genre
+    @song.save
     binding.pry
   end
 end
