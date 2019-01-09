@@ -46,5 +46,7 @@ class SongsController < ApplicationController
     @genre = Genre.find_by(name: params[:genres])
     @song.genres << @genre
     @song.save
+    flash[:message] = "Successfully created song."
   end
+
 end
