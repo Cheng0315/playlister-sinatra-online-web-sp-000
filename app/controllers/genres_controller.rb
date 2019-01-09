@@ -3,4 +3,9 @@ class GenresController < ApplicationController
     @genres = Genre.all
     erb :"genres/index"
   end
+
+  get "/genres/:slug" do
+    @genre = Genre.find {|genre| genre.slug == params[:slug]}
+    erb :"genres/show"
+  end
 end
