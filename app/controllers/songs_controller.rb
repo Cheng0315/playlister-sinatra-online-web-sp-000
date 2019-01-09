@@ -13,6 +13,14 @@ class SongsController < ApplicationController
     @artist = Artist.find_by(name: params["Artist Name"])
     if !!@artist
       @song = Song.new(name: params[:Name])
+      @song.artist = @artist
+      @song.save
+    else
+      @artist = Artist.create(name: params["Artist Name"])
+      @song = Song.new(name: params[:Name])
+      @song.artist = @artist
+      @song.save
+    end
   end
 
   get "/songs/:slug" do
