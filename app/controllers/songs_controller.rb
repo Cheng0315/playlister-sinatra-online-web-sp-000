@@ -40,4 +40,8 @@ class SongsController < ApplicationController
     @song = Song.find {|song| song.slug == params[:slug]}
     erb :"songs/edit"
   end
+
+  patch "/songs/:slug" do
+
+  end
 end
