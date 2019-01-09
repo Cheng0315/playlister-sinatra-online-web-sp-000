@@ -35,4 +35,9 @@ class SongsController < ApplicationController
     @song = Song.find {|song| song.slug == params[:slug]}
     erb :"songs/show"
   end
+
+  get "/songs/:slug/edit" do
+    @song = Song.find {|song| song.slug == params[:slug]}
+    erb :"songs/edit"
+  end
 end
