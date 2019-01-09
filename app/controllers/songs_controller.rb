@@ -46,6 +46,5 @@ class SongsController < ApplicationController
     @genre = Genre.find_by(name: params[:genres])
     @song.genres << @genre
     @song.save
-    binding.pry
   end
 end
