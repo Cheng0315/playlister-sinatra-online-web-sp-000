@@ -3,5 +3,5 @@
 artist1 = Artist.new(name: "Mike")
 song1 = Song.new(name: "Hellu")
 genre1 = Genre.new(name: "pop")
-song1.artist = artist1
-song1.genre = genre1
+song1.artist_id = artist1.id
+song1.genre_id = genre1.id
