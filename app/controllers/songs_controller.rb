@@ -25,7 +25,7 @@ class SongsController < ApplicationController
       @song.genres << @genre
       @song.save
     end
-    redirect "/songs/#{@song.slug}"
+    erb :"songs/show", locals: {message: "Successfully created song."}
   end
 
   get "/songs/:slug" do
